@@ -2,6 +2,7 @@
 
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const PACKAGE_JSON_FILES_PATHS = [
   'package.json',
@@ -122,6 +123,6 @@ const main = () => {
   }
 };
 
-if (require.main === module) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }

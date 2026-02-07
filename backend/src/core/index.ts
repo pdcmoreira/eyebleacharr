@@ -2,12 +2,10 @@ import express, { Express, Request, Response } from 'express';
 import fs from 'fs-extra';
 import path from 'path';
 import { logger } from '@/services/logger';
+import { isProduction } from '@/config';
 
 // Frontend dist path
 const frontendDistPath: string = path.join(process.cwd(), './frontend/dist');
-
-// Check if production environment
-const isProduction: boolean = process.env.NODE_ENV === 'production';
 
 /**
  * Setup static file serving for the frontend

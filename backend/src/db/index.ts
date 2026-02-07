@@ -1,11 +1,10 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { drizzle, BetterSQLite3Database } from 'drizzle-orm/better-sqlite3';
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs-extra';
-import * as schema from './schema';
+import { DB_DIR } from '@/config';
+import * as schema from '@/db/schema';
 
-// Database file path
-const DB_DIR = process.env.DB_DIR || '/app/data';
 const DB_PATH = path.join(DB_DIR, 'app.db');
 
 // Ensure database directory exists
@@ -30,7 +29,7 @@ sqliteConnection.pragma('synchronous = NORMAL');
 sqliteConnection.pragma('busy_timeout = 5000');
 
 // Create Drizzle instance
-export const db = drizzle(sqliteConnection, { schema });
+export const db: BetterSQLite3Database<typeof schema> = drizzle(sqliteConnection, { schema });
 
 // Export raw sqlite instance (e.g. for FTS operations)
 export const sqlite: Database.Database = sqliteConnection;

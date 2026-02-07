@@ -1,7 +1,6 @@
-import type { Router as RouterType } from 'express';
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, Router as RouterType } from 'express';
 import { respondSuccess } from '@/api/utils/response';
-import type { HealthData } from '@shared/types/health';
+import { HealthData } from '@shared/types/health';
 
 const router: RouterType = Router();
 

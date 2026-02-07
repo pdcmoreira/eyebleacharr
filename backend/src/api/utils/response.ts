@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import type { ApiResponse } from '@shared/types/api';
+import { ApiResponse } from '@shared/types/api';
 import { logger } from '@/services/logger';
 
 export const respondError = <T>(

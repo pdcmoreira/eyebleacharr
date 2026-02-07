@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import type { LogFilters } from '@shared/types/logs'
+import { LogFilters } from '@shared/types/logs'
+import UiButton from '@/components/ui/UiButton.vue'
+import { Eraser } from 'lucide-vue-next'
 
 const logFilters = defineModel<LogFilters>({ required: true })
 
@@ -103,13 +105,9 @@ const toggleLevel = (level: string) => {
     </div>
 
     <div class="flex flex-wrap gap-4">
-      <button
-        @click="$emit('clear')"
-        :disabled="loading"
-        class="font-mono px-4 py-2 bg-gray-700 text-cyan-400 border border-cyan-400/30 rounded cursor-pointer transition-all hover:bg-cyan-400/10 hover:border-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-sm flex items-center gap-2"
-      >
-        <span>🧹</span> Clear Log
-      </button>
+      <UiButton variant="ghost" size="sm" :disabled="loading" @click="$emit('clear')">
+        <Eraser class="w-4 h-4" /> Clear Log
+      </UiButton>
     </div>
   </div>
 </template>

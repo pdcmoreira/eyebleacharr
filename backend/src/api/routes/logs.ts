@@ -1,7 +1,6 @@
-import type { Router as RouterType } from 'express';
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, Router as RouterType } from 'express';
 import { respondSuccess, respondError } from '@/api/utils/response';
-import type { LogEntry } from '@shared/types/logs';
+import { LogEntry } from '@shared/types/logs';
 import { db, sqlite } from '@/db';
 import { logs } from '@/db/schema';
 import { desc, inArray } from 'drizzle-orm';

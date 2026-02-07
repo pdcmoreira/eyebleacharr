@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "lib": ["ES2020"],
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "*.config.ts", "drizzle.config.ts", "../shared/types/**/*.ts"]
+}

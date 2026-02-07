@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # Enable corepack and install pnpm
 RUN corepack enable
-RUN corepack prepare pnpm@8.15.0 --activate
+RUN corepack prepare pnpm@10.27.0 --activate
 
 # Set working directory
 WORKDIR /app
@@ -37,7 +37,7 @@ FROM node:20-slim AS production
 
 # Enable corepack and install pnpm
 RUN corepack enable
-RUN corepack prepare pnpm@8.15.0 --activate
+RUN corepack prepare pnpm@10.27.0 --activate
 
 # Install PM2 globally
 RUN npm install -g pm2
@@ -50,10 +50,10 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY backend/package.json ./backend/
 COPY shared/package.json ./shared/
 
-# Install production dependencies
+# Install production dependencies (drizzle-orm included, no drizzle-kit needed)
 RUN pnpm install --prod --frozen-lockfile
 
-# Copy backend source and built files
+# Copy backend built files and migration SQL files
 COPY backend/package.json ./backend/
 COPY --from=builder /app/backend/dist ./backend/dist/
 COPY --from=builder /app/backend/drizzle ./backend/drizzle/
@@ -64,8 +64,10 @@ COPY shared/ ./shared/
 # Copy built frontend
 COPY --from=builder /app/frontend/dist ./frontend/dist/
 
-# Copy PM2 configuration
+# Copy PM2 configuration and entrypoint
 COPY ecosystem.config.js ./
+COPY docker-entrypoint.sh ./
+RUN chmod +x /app/docker-entrypoint.sh
 
 # Create data and PM2 directories with world-writable permissions
 # This allows the container to run with any user ID specified in docker-compose
@@ -82,5 +84,5 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
 
-# Start the application with PM2
-CMD ["pm2-runtime", "start", "ecosystem.config.js"] 
+# Start the application (runs migrations then PM2)
+CMD ["/app/docker-entrypoint.sh"]

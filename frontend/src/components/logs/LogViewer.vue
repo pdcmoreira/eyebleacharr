@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import type { LogEntry, LogFilters } from '@shared/types/logs'
+import { LogEntry, LogFilters } from '@shared/types/logs'
 import { formatTimestamp } from '@shared/utils/date'
 import { logsService } from '@/services/logsService'
-import LogFiltersComp from './LogFilters.vue'
+import LogFiltersComponent from '@/components/logs/LogFilters.vue'
+import { ScrollText, Inbox } from 'lucide-vue-next'
 
 const AUTO_REFRESH_LOGS_INTERVAL_MS = 30000
 
@@ -86,7 +87,12 @@ const getLevelClass = (level: string) => {
 
 <template>
   <div>
-    <LogFiltersComp v-model="filters" :loading="loading" @search="fetchLogs" @clear="clearLog" />
+    <LogFiltersComponent
+      v-model="filters"
+      :loading="loading"
+      @search="fetchLogs"
+      @clear="clearLog"
+    />
 
     <div
       class="mb-8 overflow-hidden rounded-lg border border-gray-700 bg-black/40 backdrop-blur-sm shadow-2xl"
@@ -95,7 +101,7 @@ const getLevelClass = (level: string) => {
         class="flex items-center justify-between border-b border-gray-700 bg-gray-800/50 px-5 py-3"
       >
         <h2 class="text-lg font-bold text-cyan-400 flex items-center gap-2">
-          <span>📜</span> Log Stream (last {{ filters.limit }} entries)
+          <ScrollText class="w-5 h-5" /> Log Stream (last {{ filters.limit }} entries)
         </h2>
         <div
           v-if="loading"
@@ -105,7 +111,7 @@ const getLevelClass = (level: string) => {
         </div>
       </div>
 
-      <div class="max-h-[600px] overflow-y-auto p-4 font-mono text-xs leading-relaxed">
+      <div class="max-h-150 overflow-y-auto p-4 font-mono text-xs leading-relaxed">
         <div v-if="logs.length" class="space-y-1">
           <div
             v-for="log in logs"
@@ -118,7 +124,7 @@ const getLevelClass = (level: string) => {
               >[{{ log.level.toUpperCase() }}]</span
             >
 
-            <span class="text-gray-300 break-words">{{ log.message }}</span>
+            <span class="text-gray-300 wrap-break-word">{{ log.message }}</span>
 
             <span
               v-if="log.source"
@@ -132,7 +138,7 @@ const getLevelClass = (level: string) => {
           v-else-if="!loading"
           class="flex flex-col items-center justify-center py-20 text-gray-600 italic"
         >
-          <span class="text-4xl mb-4">🕳️</span>
+          <Inbox class="w-12 h-12 mb-4" />
 
           <p>No log entries found for the selected filters.</p>
         </div>

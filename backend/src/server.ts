@@ -1,16 +1,22 @@
+import { loadEnv } from './config';
+
+// Load environment variables first - explicit call instead of side-effect import
+loadEnv();
+
 import express, { Express } from 'express';
 import { setupApi } from './api';
 import { setupStaticFiles, setupSpaCatchAll } from './core';
-import { runMigrations } from './db/migrate';
+import { initializeFts } from './db/index';
 import { logger } from './services/logger';
+import { startSyncScheduler } from './services/syncService';
 
 // Prevent server crash on unhandled promise rejections
 process.on('unhandledRejection', (reason) => {
   logger.error(`Unhandled Rejection: ${reason}`);
 });
 
-// Initialize database on startup
-runMigrations();
+// Initialize FTS (Full-Text Search) for logs
+initializeFts();
 
 const app: Express = express();
 
@@ -30,6 +36,9 @@ app.listen(PORT, '0.0.0.0', () => {
   logger.debug(`Server running on port ${PORT}`);
 
   console.log(`Server running on port ${PORT}`);
+
+  // Start the sync scheduler after server is running
+  startSyncScheduler();
 });
 
 export default app;

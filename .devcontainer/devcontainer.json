@@ -1,5 +1,5 @@
 {
-  "name": "Self Hosted App Template",
+  "name": "Eyebleacharr",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
@@ -10,7 +10,12 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "vue.volar"]
+      "extensions": [
+        "Vue.volar",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "prettier.prettier-vscode"
+      ]
     }
   },
   "postCreateCommand": "pnpm install",

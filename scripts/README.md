@@ -1,17 +1,5 @@
 # Scripts
 
-## setup.js
-
-Initializes the template for a new project.
-
-```bash
-pnpm run setup
-```
-
-- Prompts for Project Name, description, and author.
-- Replaces template references (`self-hosted-app-template`) across the codebase.
-- Resets version to `0.0.1`.
-
 ## change-version-references.js
 
 Synchronizes specific versions across the monorepo.

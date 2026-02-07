@@ -1,6 +1,6 @@
-# Self Hosted App Template
+# Eyebleacharr
 
-A production-ready full-stack template for self-hosted applications.
+Track and manage watched media from Jellyfin with Radarr/Sonarr integration.
 
 ## Tech Stack
 
@@ -17,16 +17,6 @@ A production-ready full-stack template for self-hosted applications.
 -   **Docker Ready**: Multi-stage builds for optimized images
 -   **CI/CD**: Semantic Release and ghcr.io image publishing
 -   **Developer Experience**: Concurrent dev servers, hot reload, and debug configurations
-
-## Setup
-
-To transform this template into your own project, run:
-
-```bash
-pnpm run setup
-```
-
-This will prompt you for your project name and details, and replace all template references in the codebase.
 
 ## Development
 
@@ -66,17 +56,27 @@ Use VSCode "Run and Debug" to attach to the backend process.
 pnpm dev:debug
 ```
 
+### Database Migrations
+
+Uses Drizzle ORM for schema management:
+
+1.  **Edit schema**: Modify `backend/src/db/schema.ts`
+2.  **Generate migration**: `pnpm --filter backend run db:generate`
+3.  **Apply migration**: `pnpm db:migrate`
+
+Migrations run automatically on app startup. Use `db:studio` to browse the database visually.
+
+> **Note**: For quick prototyping, `db:push` syncs the schema directly (no migration files). Use `db:generate` + `db:migrate` for production-ready, versioned changes.
+
 ## Production
 
 ### Docker Compose
 
 ```yaml
-version: "3.8"
-
 services:
-  app:
-    image: ghcr.io/pdcmoreira/self-hosted-app-template:latest
-    container_name: self-hosted-app-template
+  eyebleacharr:
+    image: ghcr.io/pdcmoreira/eyebleacharr:latest
+    container_name: eyebleacharr
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -84,6 +84,9 @@ services:
       - ./data:/app/data
     environment:
       - NODE_ENV=production
+      - SYNC_INTERVAL_MINUTES=60
+    # Optional: Run as specific user to match host file ownership
+    # user: "1000:1000"
 ```
 
 ## Directory Structure
