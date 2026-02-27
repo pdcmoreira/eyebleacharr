@@ -102,9 +102,7 @@
       "indexes": {
         "idx_arr_services_type": {
           "name": "idx_arr_services_type",
-          "columns": [
-            "type"
-          ],
+          "columns": ["type"],
           "isUnique": false
         }
       },
@@ -148,16 +146,12 @@
       "indexes": {
         "idx_episode_watchers_episode": {
           "name": "idx_episode_watchers_episode",
-          "columns": [
-            "episode_id"
-          ],
+          "columns": ["episode_id"],
           "isUnique": false
         },
         "idx_episode_watchers_user": {
           "name": "idx_episode_watchers_user",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": false
         }
       },
@@ -166,12 +160,8 @@
           "name": "episode_watchers_episode_id_watched_episodes_id_fk",
           "tableFrom": "episode_watchers",
           "tableTo": "watched_episodes",
-          "columnsFrom": [
-            "episode_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["episode_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -179,12 +169,8 @@
           "name": "episode_watchers_user_id_jellyfin_users_id_fk",
           "tableFrom": "episode_watchers",
           "tableTo": "jellyfin_users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -228,9 +214,7 @@
       "indexes": {
         "idx_jellyfin_users_media_server": {
           "name": "idx_jellyfin_users_media_server",
-          "columns": [
-            "media_server_id"
-          ],
+          "columns": ["media_server_id"],
           "isUnique": false
         }
       },
@@ -239,12 +223,8 @@
           "name": "jellyfin_users_media_server_id_media_servers_id_fk",
           "tableFrom": "jellyfin_users",
           "tableTo": "media_servers",
-          "columnsFrom": [
-            "media_server_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_server_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -303,23 +283,17 @@
       "indexes": {
         "idx_logs_created_at": {
           "name": "idx_logs_created_at",
-          "columns": [
-            "created_at"
-          ],
+          "columns": ["created_at"],
           "isUnique": false
         },
         "idx_logs_level": {
           "name": "idx_logs_level",
-          "columns": [
-            "level"
-          ],
+          "columns": ["level"],
           "isUnique": false
         },
         "idx_logs_source": {
           "name": "idx_logs_source",
-          "columns": [
-            "source"
-          ],
+          "columns": ["source"],
           "isUnique": false
         }
       },
@@ -394,9 +368,7 @@
       "indexes": {
         "idx_media_servers_type": {
           "name": "idx_media_servers_type",
-          "columns": [
-            "type"
-          ],
+          "columns": ["type"],
           "isUnique": false
         }
       },
@@ -440,16 +412,12 @@
       "indexes": {
         "idx_movie_watchers_movie": {
           "name": "idx_movie_watchers_movie",
-          "columns": [
-            "movie_id"
-          ],
+          "columns": ["movie_id"],
           "isUnique": false
         },
         "idx_movie_watchers_user": {
           "name": "idx_movie_watchers_user",
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "isUnique": false
         }
       },
@@ -458,12 +426,8 @@
           "name": "movie_watchers_movie_id_watched_movies_id_fk",
           "tableFrom": "movie_watchers",
           "tableTo": "watched_movies",
-          "columnsFrom": [
-            "movie_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["movie_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -471,12 +435,8 @@
           "name": "movie_watchers_user_id_jellyfin_users_id_fk",
           "tableFrom": "movie_watchers",
           "tableTo": "jellyfin_users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -577,23 +537,17 @@
       "indexes": {
         "watched_episodes_jellyfin_id_unique": {
           "name": "watched_episodes_jellyfin_id_unique",
-          "columns": [
-            "jellyfin_id"
-          ],
+          "columns": ["jellyfin_id"],
           "isUnique": true
         },
         "idx_watched_episodes_series": {
           "name": "idx_watched_episodes_series",
-          "columns": [
-            "series_id"
-          ],
+          "columns": ["series_id"],
           "isUnique": false
         },
         "idx_watched_episodes_last_watched": {
           "name": "idx_watched_episodes_last_watched",
-          "columns": [
-            "last_watched_at"
-          ],
+          "columns": ["last_watched_at"],
           "isUnique": false
         }
       },
@@ -602,12 +556,8 @@
           "name": "watched_episodes_series_id_watched_series_id_fk",
           "tableFrom": "watched_episodes",
           "tableTo": "watched_series",
-          "columnsFrom": [
-            "series_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["series_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -737,37 +687,27 @@
       "indexes": {
         "watched_movies_jellyfin_id_unique": {
           "name": "watched_movies_jellyfin_id_unique",
-          "columns": [
-            "jellyfin_id"
-          ],
+          "columns": ["jellyfin_id"],
           "isUnique": true
         },
         "idx_watched_movies_media_server": {
           "name": "idx_watched_movies_media_server",
-          "columns": [
-            "media_server_id"
-          ],
+          "columns": ["media_server_id"],
           "isUnique": false
         },
         "idx_watched_movies_status": {
           "name": "idx_watched_movies_status",
-          "columns": [
-            "status"
-          ],
+          "columns": ["status"],
           "isUnique": false
         },
         "idx_watched_movies_tmdb": {
           "name": "idx_watched_movies_tmdb",
-          "columns": [
-            "tmdb_id"
-          ],
+          "columns": ["tmdb_id"],
           "isUnique": false
         },
         "idx_watched_movies_last_watched": {
           "name": "idx_watched_movies_last_watched",
-          "columns": [
-            "last_watched_at"
-          ],
+          "columns": ["last_watched_at"],
           "isUnique": false
         }
       },
@@ -776,12 +716,8 @@
           "name": "watched_movies_media_server_id_media_servers_id_fk",
           "tableFrom": "watched_movies",
           "tableTo": "media_servers",
-          "columnsFrom": [
-            "media_server_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_server_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -920,30 +856,22 @@
       "indexes": {
         "watched_series_jellyfin_id_unique": {
           "name": "watched_series_jellyfin_id_unique",
-          "columns": [
-            "jellyfin_id"
-          ],
+          "columns": ["jellyfin_id"],
           "isUnique": true
         },
         "idx_watched_series_media_server": {
           "name": "idx_watched_series_media_server",
-          "columns": [
-            "media_server_id"
-          ],
+          "columns": ["media_server_id"],
           "isUnique": false
         },
         "idx_watched_series_status": {
           "name": "idx_watched_series_status",
-          "columns": [
-            "status"
-          ],
+          "columns": ["status"],
           "isUnique": false
         },
         "idx_watched_series_tmdb": {
           "name": "idx_watched_series_tmdb",
-          "columns": [
-            "tmdb_id"
-          ],
+          "columns": ["tmdb_id"],
           "isUnique": false
         }
       },
@@ -952,12 +880,8 @@
           "name": "watched_series_media_server_id_media_servers_id_fk",
           "tableFrom": "watched_series",
           "tableTo": "media_servers",
-          "columnsFrom": [
-            "media_server_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_server_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

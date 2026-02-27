@@ -134,8 +134,20 @@ export default [
   // ===================
   {
     files: ['*.mjs', '*.js', '*.ts', '*.config.ts', '*.config.js'],
+    languageOptions: {
+      globals: {
+        module: 'readonly',
+        require: 'readonly',
+        exports: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        process: 'readonly',
+        console: 'readonly',
+      },
+    },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
+      'no-undef': 'off',
     },
   },
 ];
