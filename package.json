@@ -1,6 +1,6 @@
 {
   "name": "eyebleacharr",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Track and delete watched movies/series.",
   "private": true,
   "scripts": {

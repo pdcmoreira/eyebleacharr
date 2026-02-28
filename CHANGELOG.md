@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/pdcmoreira/eyebleacharr/compare/v1.0.1...v1.0.2) (2026-02-28)
+
+### Chores
+
+* fix esm not being able to import js ([c245693](https://github.com/pdcmoreira/eyebleacharr/commit/c2456936b0b1eba573dffd18b43909d3cfe8b083))
+
 ## [1.0.1](https://github.com/pdcmoreira/eyebleacharr/compare/v1.0.0...v1.0.1) (2026-02-28)
 
 ### Bug Fixes
