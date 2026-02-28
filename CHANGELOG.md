@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/pdcmoreira/eyebleacharr/compare/v1.0.0...v1.0.1) (2026-02-28)
+
+### Bug Fixes
+
+* backend build paths ([dd527dc](https://github.com/pdcmoreira/eyebleacharr/commit/dd527dce3910e4dc4de8c5b910e6733709e30cb9))
+
+### Chores
+
+* include package.json files when updating release ([b159fd7](https://github.com/pdcmoreira/eyebleacharr/commit/b159fd76e8e2dc1a94eaa04e67b4643039b8ec8b))
+* sync template ([26ed0ec](https://github.com/pdcmoreira/eyebleacharr/commit/26ed0ec61ea8912fe690109b66082579d2bdb3f5))
+* sync template [skip ci] ([f266bfc](https://github.com/pdcmoreira/eyebleacharr/commit/f266bfc084a364e8ba62c9a87a0f3673c3d96b57))
+
 ## 1.0.0 (2026-02-07)
 
 ### Features
